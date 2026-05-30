@@ -1,0 +1,7 @@
+node_modules/
+dist/
+out/
+*.vsix
+.vscode-test/
+.eslintcache
+RELEASE_CHECKLIST.md

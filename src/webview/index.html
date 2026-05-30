@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none';
+                 style-src 'unsafe-inline' ${webviewCspSource};
+                 script-src ${webviewCspSource};
+                 img-src ${webviewCspSource} data:;
+                 font-src ${webviewCspSource};" />
+  <title>Claude Frame</title>
+  <link rel="stylesheet" href="${cssUri}" />
+</head>
+<body>
+
+  <div id="error-banner" class="error-banner">
+    <span id="error-message"></span>
+    <span class="error-close" id="error-close-btn">×</span>
+  </div>
+
+  <div class="header">
+    <div class="branding-container">
+      <div class="title-row">
+        <span class="heart-icon" id="heart-icon" aria-hidden="true">♥</span>
+        <span id="chat-title-text" class="chat-title" contenteditable="false">Claude Frame</span>
+        <span class="edit-icon" id="edit-icon-btn" title="Edit title">✏️</span>
+        <span class="palette-icon" id="palette-icon-btn" title="Change accent color">
+          🎨
+          <div class="color-swatch-popup" id="color-swatch-popup">
+            <div class="color-swatch" data-color="#007acc" style="background-color:#007acc"></div>
+            <div class="color-swatch" data-color="#2f5778" style="background-color:#2f5778"></div>
+            <div class="color-swatch" data-color="#16a085" style="background-color:#16a085"></div>
+            <div class="color-swatch" data-color="#28a745" style="background-color:#28a745"></div>
+            <div class="color-swatch" data-color="#7cb342" style="background-color:#7cb342"></div>
+            <div class="color-swatch" data-color="#f1c40f" style="background-color:#f1c40f"></div>
+            <div class="color-swatch" data-color="#fb8c00" style="background-color:#fb8c00"></div>
+            <div class="color-swatch" data-color="#e74c3c" style="background-color:#e74c3c"></div>
+            <div class="color-swatch" data-color="#ec407a" style="background-color:#ec407a"></div>
+            <div class="color-swatch" data-color="#9b59b6" style="background-color:#9b59b6"></div>
+            <div class="color-swatch" data-color="#5e35b1" style="background-color:#5e35b1"></div>
+            <div class="color-swatch" data-color="#7f8c8d" style="background-color:#7f8c8d"></div>
+          </div>
+        </span>
+      </div>
+    </div>
+
+    <span class="header-label">Project:</span>
+    <select id="project-selector"></select>
+
+    <span class="header-label">Conversation:</span>
+    <select id="session-selector"></select>
+
+    <button id="refresh-btn">Refresh</button>
+    <button id="resume-btn" class="success">Resume</button>
+    <button id="new-btn">New Chat</button>
+  </div>
+
+  <div class="settings-bar">
+    <label>
+      <input type="checkbox" id="align-left-checkbox" />
+      Align all left
+    </label>
+    <label>
+      <input type="checkbox" id="group-turn-checkbox" checked />
+      Group by turn
+    </label>
+    <label id="tmux-label" style="display: none;">
+      <input type="checkbox" id="tmux-checkbox" />
+      Use tmux
+    </label>
+  </div>
+
+  <div class="batch-bar">
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <button id="zen-toggle-btn" class="secondary" style="padding: 4px 8px; font-size: 12px; margin-right: 6px;">▲ Zen Mode</button>
+      <button id="select-all-btn">Select All</button>
+      <button id="clear-selection-btn">Clear Selection</button>
+      <button id="copy-selected-btn">Copy Selected (<span id="selected-count">0</span>)</button>
+    </div>
+    <div id="session-id-badge" style="display: none; align-items: center; gap: 8px; color: var(--vscode-descriptionForeground); user-select: none; flex-shrink: 0; white-space: nowrap;">
+      <span id="active-session-id-text" style="font-family: var(--vscode-editor-font-family, monospace); opacity: 0.75; font-size: 13px;">—</span>
+      <button class="action-btn" id="copy-session-id-btn" style="padding: 2px 6px;">📋 Copy ID</button>
+    </div>
+  </div>
+
+  <div class="message-container" id="message-container">
+    <div id="empty-state" style="text-align: center; padding: 40px; color: var(--vscode-descriptionForeground);">
+      Select a conversation to load logs.
+    </div>
+  </div>
+
+  <div id="resizer" class="resizer">
+    <button id="input-toggle-btn" class="input-toggle-btn" title="Hide input area">▼ Hide</button>
+  </div>
+
+  <div class="input-area" id="input-area">
+    <div class="input-row">
+      <textarea id="prompt-input" placeholder="Select a conversation and click 'Resume', or click 'New Chat' to start chatting..." readonly></textarea>
+      <button id="send-btn" disabled>Send</button>
+    </div>
+  </div>
+
+  <script src="${jsUri}"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{"type":"user","message":{"role":"user","content":[{"type":"text","text":"hi"}]},"timestamp":"2026-05-23T10:00:00Z"}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"hello"}]},"timestamp":"2026-05-23T10:00:01Z"}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"thinking","thinking":"considering options"}]},"timestamp":"2026-05-23T10:00:02Z"}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"tool_use","name":"bash","input":{"command":"ls -la"}}]},"timestamp":"2026-05-23T10:00:03Z"}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"part 1 "},{"type":"text","text":"part 2"}]},"timestamp":"2026-05-23T10:00:04Z"}
+{"type":"user","message":{"role":"user","content":"typed by the user"},"timestamp":"2026-05-23T10:00:05Z"}
+{"type":"user","message":{"role":"user","content":[{"type":"tool_result","tool_use_id":"toolu_abc","content":"some output"}]},"timestamp":"2026-05-23T10:00:06Z"}
+{"type":"user","isMeta":true,"message":{"role":"user","content":[{"type":"text","text":"system-injected skill activation"}]},"timestamp":"2026-05-23T10:00:07Z"}
